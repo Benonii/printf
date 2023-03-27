@@ -1,47 +1,59 @@
 #include "main.h"
-#include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 
 /**
-  * print_binary - converting an int to binary
-  * @args:  list of arguments
-  *
-  * Return: number of printed digits
-  */
-int print_binary(va_list args)
-{
-	unsigned int x = 0;
-	int b = 0, m = 0;
+ * unsigned_integer - prints unsigned integers
+ * @args: List of arguments
+ *
+ * Return: count of the numbers
+ */
 
-	m = va_arg(args, int);
-	x = m;
-	if (m < 0)
+int unsigned_integer(va_list args)
+{
+	unsigned int n;
+
+	n = va_arg(args, unsigned int);
+
+	if (n == 0)
 	{
-		_write('1');
-		m = m * -1;
-		x = m;
-		b += 1;
+		return (print_unsigned_no(n));
 	}
-	while (x > 0)
+	if (n < 1)
 	{
-		x = x / 2;
-		b++;
+		return (-1);
 	}
-	recursion_binary(m);
-	return (b);
+	return (print_unsigned_no(n));
 }
 
 /**
-  * recursion_binary - Prints a binary
-  * @a: integer to print
-  *
-  */
-void recursion_binary(int a)
-{
-	unsigned int t;
+ * print_unsigned_no - prints an unsigned number
+ *
+ * @m: unsigned integer
+ * Return: amount of numbers printed
+ */
 
-	t = a;
-	if (t / 2)
-		recursion_binary(t / 2);
-	_write(t % 2 + '0');
+int print_unsigned_no(unsigned int m)
+{
+	int y = 1, z = 0;
+
+	unsigned int num;
+
+	num = m;
+
+	for (; num / y > 9; )
+	{
+		y *= 10;
+	}
+	for (; y != 0; )
+	{
+		z += _write((num / y) + '0');
+
+		num %= y;
+
+		y /= 10;
+	}
+
+	return (z);
 }

@@ -13,6 +13,8 @@ int _write(char c);
 int print_percent(va_list args);
 int print_binary(va_list args);
 void recursion_binary(int a);
+int unsigned_integer(va_list args);
+int print_unsigned_no(unsigned int m);
 
 /**
  * struct printer - identifies format specifier
