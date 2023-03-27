@@ -11,6 +11,8 @@ int print_integer(va_list args);
 void recursion_integer(int a);
 int _write(char c);
 int print_percent(va_list args);
+int print_binary(va_list args);
+void recursion_binary(int a);
 
 /**
  * struct printer - identifies format specifier
