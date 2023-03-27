@@ -41,6 +41,25 @@ int print_string(va_list args)
 }
 
 /**
+ * print_percent - prints a percent sign when it is
+ * 		   specified after another %
+ * @args: Empty variable
+ * Return: The number of bytes(1)
+ */
+
+int print_percent(va_list args)
+{
+	char percent_sign;
+	int n;
+
+	percent_sign = '%';
+	(void) args;
+
+	n = write(1, &percent_sign, 1);
+	return(n);
+}
+
+/**
  * print_integer - prints an integer
  *
  * @args: a list of variadic arguments
@@ -105,6 +124,7 @@ int _printf(const char *format, ...)
 	print funcs[] = {
 		{"c", print_char},
 		{"s", print_string},
+		{"%", print_percent},
 		{"d", print_integer},
 		{"i", print_integer}
 	};
@@ -118,10 +138,10 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while (j < 2 && format[i] != *(funcs[j].symbol))
+			while (j < 5 && format[i] != *(funcs[j].symbol))
 				j++;
 
-			if (j < 2)
+			if (j < 5)
 			{
 				n += funcs[j].print(args);
 			}
