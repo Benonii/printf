@@ -11,15 +11,15 @@
 
 int print_char(va_list args)
 {
-	int o;
+	int n;
 
 	char ch;
 
 	ch = va_arg(args, int);
 
-	o = write(1, &ch, 1);
+	n = write(1, &ch, 1);
 
-	return (o);
+	return (n);
 }
 
 /**
@@ -48,7 +48,7 @@ int print_string(va_list args)
 
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, k = 0;
+	int i = 0, j = 0, k = 0, n = 0;
 	char str[100] = {0};
 	va_list args;
 
@@ -71,17 +71,16 @@ int _printf(const char *format, ...)
 
 			if (j < 2)
 			{
-				funcs[j].print(args);
+				n += funcs[j].print(args);
 			}
 		}
 		else
 		{
 			str[j] = format[i];
-			k = write(1, str, strlen(str));
+			k += write(1, str, strlen(str));
 			j++;
 		}
 		i++;
 	}
-
-	return (k);
+	return (k + n);
 }
