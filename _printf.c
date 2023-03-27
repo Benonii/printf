@@ -40,6 +40,48 @@ int print_string(va_list args)
 	return (n);
 }
 
+int print_integer(va_list args)
+{
+
+        int count = 1, m = 0;
+
+        unsigned int n = 0;
+
+        n = va_arg(args, int);
+        m = n;
+        if (m < 0)
+        {
+                _write('-');
+                m = m * -1;
+                n = m;
+                count += 1;
+        }
+        while (n > 9)
+        {
+                n = n / 10;
+                count++;
+        }
+
+        recursion_integer(m);
+        return (count);
+}
+
+/**
+  * recursion_integer - Prints an integer
+  * @a: integer to print
+  *
+  * Return: Nothing
+  */
+void recursion_integer(int a)
+{
+        unsigned int t;
+
+        t = a;
+        if (t / 10)
+                recursion_integer(t / 10);
+        _write(t % 10 + '0');
+}
+
 /**
  * _printf - produces an output according to a format
  * @format: the format specifier
@@ -54,7 +96,9 @@ int _printf(const char *format, ...)
 
 	print funcs[] = {
 		{"c", print_char},
-		{"s", print_string}
+		{"s", print_string},
+		{"d", print_integer},
+                {"i", print_integer}
 	};
 
 	va_start(args, format);

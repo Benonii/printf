@@ -7,6 +7,9 @@
 int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
+int print_integer(va_list args);
+void recursion_integer(int a);
+int _write(char c);
 
 typedef struct printer
 {
