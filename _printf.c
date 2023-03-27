@@ -40,30 +40,38 @@ int print_string(va_list args)
 	return (n);
 }
 
+/**
+ * print_integer - prints an integer
+ *
+ * @args: a list of variadic arguments
+ *
+ * Return: length of the string
+ */
+
 int print_integer(va_list args)
 {
 
-        int count = 1, m = 0;
+	int count = 1, m = 0;
 
-        unsigned int n = 0;
+	unsigned int n = 0;
 
-        n = va_arg(args, int);
-        m = n;
-        if (m < 0)
-        {
-                _write('-');
-                m = m * -1;
-                n = m;
-                count += 1;
-        }
-        while (n > 9)
-        {
-                n = n / 10;
-                count++;
-        }
+	n = va_arg(args, int);
+	m = n;
+	if (m < 0)
+	{
+		_write('-');
+		m = m * -1;
+		n = m;
+		count += 1;
+	}
+	while (n > 9)
+	{
+		n = n / 10;
+		count++;
+	}
 
-        recursion_integer(m);
-        return (count);
+	recursion_integer(m);
+	return (count);
 }
 
 /**
@@ -74,18 +82,18 @@ int print_integer(va_list args)
   */
 void recursion_integer(int a)
 {
-        unsigned int t;
+	unsigned int t;
 
-        t = a;
-        if (t / 10)
-                recursion_integer(t / 10);
-        _write(t % 10 + '0');
+	t = a;
+	if (t / 10)
+	recursion_integer(t / 10);
+	_write(t % 10 + '0');
 }
 
 /**
  * _printf - produces an output according to a format
  * @format: the format specifier
-  Return: The number of chars printed
+ * Return: The number of chars printed
  */
 
 int _printf(const char *format, ...)
@@ -98,7 +106,7 @@ int _printf(const char *format, ...)
 		{"c", print_char},
 		{"s", print_string},
 		{"d", print_integer},
-                {"i", print_integer}
+		{"i", print_integer}
 	};
 
 	va_start(args, format);

@@ -11,6 +11,14 @@ int print_integer(va_list args);
 void recursion_integer(int a);
 int _write(char c);
 
+/**
+ * struct printer - identifies format specifier
+ * @symbol: char
+ * @print: to be printed
+ *
+ * Return: pointer
+ */
+
 typedef struct printer
 {
 	char *symbol;
