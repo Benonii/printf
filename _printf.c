@@ -12,14 +12,22 @@
 int print_char(va_list args)
 {
 	int n;
-
 	char ch;
+	char *nil;
 
 	ch = va_arg(args, int);
 
-	n = write(1, &ch, 1);
-
-	return (n);
+	if (ch == '\0')
+	{
+		nil = "(null)";
+		write(1, nil, 6);
+		return (6);
+	}
+	else
+	{
+		n = write(1, &ch, 1);
+		return (n);
+	}
 }
 
 /**
@@ -30,14 +38,22 @@ int print_char(va_list args)
 
 int print_string(va_list args)
 {
-	char *str;
+	char *str, *nil;
 	int n;
 
 	str = va_arg(args, char *);
 
-	n = write(1, str, strlen(str));
-
-	return (n);
+	if (str == NULL)
+	{
+		nil = "(null)";
+		write(1, nil, 6);
+		return (6);
+	}
+	else
+	{
+		n = write(1, str, strlen(str));
+		return (n);
+	}
 }
 
 /**
@@ -110,25 +126,23 @@ int _printf(const char *format, ...)
 		{"i", print_integer},
 		{"b", print_binary},
 		{"u", unsigned_integer},
+		{"p", print_pointer}
 	};
 
 	va_start(args, format);
+	if (format == NULL)
+		return (-1);
 
 	while (format && format[i])
 	{
 		j = 0;
-
 		if (format[i] == '%')
 		{
 			i++;
 			while (j < 7 && format[i] != *(funcs[j].symbol))
 				j++;
-
 			if (j < 7)
-			{
-				n += funcs[j].print(args);
-			}
-		}
+				n += funcs[j].print(args); }
 		else
 		{
 			str[j] = format[i];

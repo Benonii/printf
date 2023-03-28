@@ -1,6 +1,6 @@
 #include "main.h"
 #include <unistd.h>
-#include <stdlib.h>
+#include <string.h>
 
 /**
  * print_pointer - prints address arguments
@@ -16,12 +16,12 @@ int print_pointer(va_list args)
 
 	ptr = va_arg(args, char *);
 
-	for (i = 0; i < sizeof(ptr); i++)
+	for (i = 0; i < strlen(ptr); i++)
 	{
 		c = va_arg(args, int);
 		write(1, &c, 1);
 	}
-
 	n = i;
+
 	return (n);
 }
