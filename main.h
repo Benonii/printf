@@ -15,6 +15,8 @@ int print_binary(va_list args);
 void recursion_binary(int a);
 int unsigned_integer(va_list args);
 int print_unsigned_no(unsigned int m);
+int print_address(va_list args);
+int rev_string(va_list args);
 
 /**
  * struct printer - identifies format specifier
