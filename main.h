@@ -11,12 +11,11 @@ int print_integer(va_list args);
 void recursion_integer(int a);
 int _write(char c);
 int print_percent(va_list args);
+int print_pointer(va_list args);
 int print_binary(va_list args);
 void recursion_binary(int a);
 int unsigned_integer(va_list args);
 int print_unsigned_no(unsigned int m);
-int print_address(va_list args);
-int rev_string(va_list args);
 
 /**
  * struct printer - identifies format specifier

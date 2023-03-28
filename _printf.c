@@ -110,8 +110,6 @@ int _printf(const char *format, ...)
 		{"i", print_integer},
 		{"b", print_binary},
 		{"u", unsigned_integer},
-		{"p", print_address},
-		{"r", rev_string}
 	};
 
 	va_start(args, format);
@@ -123,10 +121,10 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while (j < 9 && format[i] != *(funcs[j].symbol))
+			while (j < 7 && format[i] != *(funcs[j].symbol))
 				j++;
 
-			if (j < 9)
+			if (j < 7)
 			{
 				n += funcs[j].print(args);
 			}
