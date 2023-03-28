@@ -18,7 +18,7 @@ int print_binary(va_list args)
 	if (m < 0)
 	{
 		_write('1');
-		m = m * -1;
+		m = m * (-1);
 		x = m;
 		b += 1;
 	}
@@ -42,6 +42,8 @@ void recursion_binary(int a)
 
 	t = a;
 	if (t / 2)
+	{
 		recursion_binary(t / 2);
+	}
 	_write(t % 2 + '0');
 }
