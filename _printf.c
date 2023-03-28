@@ -13,21 +13,11 @@ int print_char(va_list args)
 {
 	int n;
 	char ch;
-	char *nil;
 
 	ch = va_arg(args, int);
 
-	if (ch == '\0')
-	{
-		nil = "(null)";
-		write(1, nil, 6);
-		return (6);
-	}
-	else
-	{
-		n = write(1, &ch, 1);
-		return (n);
-	}
+	n = write(1, &ch, 1);
+	return (n);
 }
 
 /**
@@ -38,22 +28,13 @@ int print_char(va_list args)
 
 int print_string(va_list args)
 {
-	char *str, *nil;
+	char *str;
 	int n;
 
 	str = va_arg(args, char *);
 
-	if (str == NULL)
-	{
-		nil = "(null)";
-		write(1, nil, 6);
-		return (6);
-	}
-	else
-	{
-		n = write(1, str, strlen(str));
-		return (n);
-	}
+	n = write(1, str, strlen(str));
+	return (n);
 }
 
 /**
@@ -130,8 +111,6 @@ int _printf(const char *format, ...)
 	};
 
 	va_start(args, format);
-	if (format == NULL)
-		return (-1);
 
 	while (format && format[i])
 	{
