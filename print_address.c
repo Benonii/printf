@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * print_address - prints address arguments
+ * print_pointer - prints address arguments
  * @args: passed arguments
  * Return: Numbet of chars printed
  */
