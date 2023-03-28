@@ -1,4 +1,4 @@
-This project is an imitation of C's printf function. It had two mandatory tasks
+This project is an imitation of C's printf function done in a group by Benoni Esckinder and Selam Afework. It had two mandatory tasks
 
 0.
 "Write a function that produces output according to a format.
@@ -30,4 +30,12 @@ This project is an imitation of C's printf function. It had two mandatory tasks
 
 (Description given from the alx-intranet)
 
-Description of advacned tasks coming soon...
+The advanced tasks written here are: 
+Q.3 Handling the '%u' following conversion specifier:
+
+You don’t have to handle the flag characters
+You don’t have to handle field width
+You don’t have to handle precision
+You don’t have to handle the length modifiers
+
+Q.4 Use a local buffer of 1024 chars in order to call write as little as possible.
